@@ -45,11 +45,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     @IBAction func btnClear(_ sender: Any) {
         clearFields()
-        
     }
-    @IBAction func txtLocationEdit(_ sender: Any) {
-        let textfield:UITextField = sender as! UITextField
-        if textfield.text!.count == 3 {
+    func locationEdit(txtSearchField:SearchTextField){
+        if textfield.text!.count > 3 {
             viewModel.fetchLocation(input:textfield.text!) { (array) in
                 for item in 0..<array.count {
                     self.filter.append(array[item].mainText)
@@ -57,6 +55,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 self.txtLocation.filterStrings(self.filter)
             }
         }
+    }
+    @IBAction func txtLocationEdit(_ sender: Any) {
+        let textfield:SearchTextField = sender as! SearchTextField
+        locationEdit(txtSearchField: textfield)
         
     }
     func showAlert(){
