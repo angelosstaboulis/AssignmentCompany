@@ -47,8 +47,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
         clearFields()
     }
     func locationEdit(txtSearchField:SearchTextField){
-        if textfield.text!.count > 3 {
-            viewModel.fetchLocation(input:textfield.text!) { (array) in
+        if txtSearchField.text!.count > 3 {
+            viewModel.fetchLocation(input:txtSearchField.text!) { (array) in
                 for item in 0..<array.count {
                     self.filter.append(array[item].mainText)
                 }
